@@ -13,7 +13,10 @@ default: &default
   password: 1234
 
 development:
-  <<: *default
+  adapter: sqlite3
+  pool: 5
+  timeout: 5000
+  encoding: unicode
   database: store_development
 
 # Warning: The database defined as "test" will be erased and
