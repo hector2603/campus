@@ -9,6 +9,16 @@
   </div>
 
   <div class="field">
+    <%= f.label :Nombre %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Rol %><br />
+    <%= f.number_field :rol, autofocus: true %>
+  </div>
+
+  <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>

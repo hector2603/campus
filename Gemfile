@@ -1,10 +1,8 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -31,6 +29,14 @@ gem 'jbuilder', '~> 2.5'
 # gema de divise, módulo de usuarios
 gem 'devise'
 
+# font awesome para rails 
+gem "font-awesome-rails"
+
+
+gem 'coffee-script-source', '1.8.0'
+
+#Base de datos
+gem 'pg'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
