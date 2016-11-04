@@ -38,6 +38,11 @@ gem 'coffee-script-source', '1.8.0'
 #Base de datos
 gem 'pg'
 
+
+# para heroku 
+gem 'rails_12factor', group: :production  
+gem 'unicorn' 
+ruby '2.2.4'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
