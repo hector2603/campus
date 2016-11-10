@@ -1,56 +1,50 @@
 <div class="wrapper">
 
-	    <div class="sidebar" data-color="purple" data-image="/assets/sidebar-1.jpg">
+	    <div class="sidebar" data-color="red" data-image="/assets/BannerTulua.jpg">
 			<div class="logo">
-				<a href="http://www.creative-tim.com" class="simple-text">
-					Creative Tim
+				<a href="#" class="simple-text">
+					Campus Virtual
 				</a>
 			</div>
 
 	    	<div class="sidebar-wrapper">
 	            <ul class="nav">
 	                <li class="active">
-	                    <a href="dashboard.html">
-	                        <i class="material-icons">dashboard</i>
-	                        <p>Dashboard</p>
-	                    </a>
+						<%= link_to(root_path) unless current_page?(root_url) do %>
+	                        <%= fa_icon "home"%>
+	                        <p>Home</p>
+					    <%end%>
 	                </li>
 	                <li>
-	                    <a href="user.html">
-	                        <i class="material-icons">person</i>
-	                        <p>User Profile</p>
-	                    </a>
+	                	<%= link_to(root_path)  do %>
+	                        <%= fa_icon "user"%>
+	                        <p>Mi Perfil</p>
+					    <%end%>
 	                </li>
 	                <li>
-	                    <a href="table.html">
-	                        <i class="material-icons">content_paste</i>
-	                        <p>Table List</p>
-	                    </a>
+	                	<%= link_to(root_path)  do %>
+	                        <%= fa_icon "clipboard"%>
+	                        <p>Crusos</p>
+					    <%end%>
 	                </li>
 	                <li>
-	                    <a href="typography.html">
-	                        <i class="material-icons">library_books</i>
-	                        <p>Typography</p>
-	                    </a>
+	                	<%= link_to(root_path)  do %>
+	                        <%= fa_icon "newspaper-o"%>
+	                        <p>Noticias</p>
+					    <%end%>
 	                </li>
-	                <li>
-	                    <a href="icons.html">
-	                        <i class="material-icons">bubble_chart</i>
-	                        <p>Icons</p>
-	                    </a>
-	                </li>
-	                <li>
-	                    <a href="maps.html">
-	                        <i class="material-icons">location_on</i>
-	                        <p>Maps</p>
-	                    </a>
-	                </li>
-	                <li>
-	                    <a href="notifications.html">
-	                        <i class="material-icons text-gray">notifications</i>
-	                        <p>Notifications</p>
-	                    </a>
-	                </li>
+	                <li class="dropdown">
+        			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+        			<ul class="dropdown-menu">
+					  <li><a href="#">Action</a></li>
+					  <li><a href="#">Another action</a></li>
+					  <li><a href="#">Something else here</a></li>
+					  <li class="divider"></li>
+					  <li><a href="#">Separated link</a></li>
+					  <li class="divider"></li>
+				      <li><a href="#">One more separated link</a></li>
+        			</ul>
+        		</li>
 	            </ul>
 	    	</div>
 	    </div>
@@ -65,7 +59,7 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="#">Material Dashboard</a>
+						<a class="navbar-brand">Campus Virtual</a>
 					</div>
 					<div class="collapse navbar-collapse">
 						<ul class="nav navbar-nav navbar-right">
