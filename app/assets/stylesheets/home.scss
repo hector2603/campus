@@ -1,3 +1,29 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.texto{
+font-weight:bold !important; 
+}
+
+.card:before {
+
+  background: rgba(0, 0, 0, 0.08);
+  content: '';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  bottom: -8px;
+  left: -8px;
+  z-index: -1;
+  border-radius: 4px;
+  }
+
+.form-group.is-focused .form-control {
+  background-image: linear-gradient(#f44336, #f44336), linear-gradient(#D2D2D2, #D2D2D2) !important;
+
+}
+
+.stats a {
+	color: #e53935;
+}

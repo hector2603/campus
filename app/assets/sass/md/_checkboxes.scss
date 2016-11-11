@@ -84,7 +84,7 @@
     &:checked {
 
       & + .checkbox-material .check {
-        background: $mdb-checkbox-checked-color;
+        background: red;
       }
 
       & + .checkbox-material .check:before {
