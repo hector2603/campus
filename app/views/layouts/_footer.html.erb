@@ -1,0 +1,23 @@
+			<footer class="footer">
+				<div class="container-fluid">
+					<nav class="pull-left">
+						<ul>
+							<li>
+								<%= link_to(root_path)do %>
+			                        <p>Home</p>
+							    <%end%>
+							</li>
+							<li>
+								<%= link_to(root_path)do %>
+			                        <p>Blog</p>
+							    <%end%>
+							</li>
+							<li>
+								<%= link_to "Cerrar Sesión", destroy_user_session_path, :method => :delete %>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</footer>
+		</div>
+	</div>
