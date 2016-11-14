@@ -3,8 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .texto{
-font-weight:bold !important; 
+font-weight:bold !important;
+font-size: 2em;	 
 }
+
+
+
+
 
 .card:before {
 
@@ -17,6 +22,7 @@ font-weight:bold !important;
   left: -8px;
   z-index: -1;
   border-radius: 4px;
+
   }
 
 .form-group.is-focused .form-control {
@@ -26,4 +32,27 @@ font-weight:bold !important;
 
 .stats a {
 	color: #e53935;
+}
+
+
+.cajon {
+
+	width:auto;
+	height: auto;
+    float:left;
+}
+
+.card-header {
+	height: 114px;
+}
+@media screen and  (max-width: 490px) {
+     .card {
+	width:280px !important;
+}
+}
+
+@media screen and (min-width: 490px) {
+   .card {
+	width:426px !important;
+}
 }
