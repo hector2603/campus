@@ -1,3 +1,18 @@
+// código mío 
+
+$( document ).ready(function() {
+    if ($( "#notice" ).length) {
+        demo.showNotification('bottom','right',$("#notice").text(),2)
+    }
+    if ($( "#alert" ).length) {
+        demo.showNotification('bottom','right',$("#alert").text(),1)
+    }
+});
+
+
+
+// código hecho
+
 type = ['','info','success','warning','danger'];
 
 
@@ -161,12 +176,12 @@ demo = {
         marker.setMap(map);
     },
 
-	showNotification: function(from, align){
-    	color = Math.floor((Math.random() * 4) + 1);
+	showNotification: function(from, align,mensaje,c){
+    	color = c;
 
     	$.notify({
         	icon: "notifications",
-        	message: "Welcome to <b>Material Dashboard</b> - a beautiful freebie for every web developer."
+        	message: mensaje
 
         },{
             type: type[color],

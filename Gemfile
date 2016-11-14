@@ -41,6 +41,9 @@ gem 'pg'
 #boostrap
 gem 'bootstrap-sass', '~> 3.1.1'
 
+#jquery UI
+gem 'jquery-ui-rails'
+
 # para heroku 
 #gem 'rails_12factor', group: :production  
 #gem 'unicorn' 
