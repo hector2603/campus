@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 			flash[:notice] = "Necesitas ser Administrador para accerder a esta función" 
 			redirect_to root_path
 		else
-			print "sí es admin                    "
+			#print "sí es admin                    "
 		end
 	end
 
@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
 			flash[:notice] = "Necesitas ser Profesor para accerder a esta función" 
 			redirect_to root_path
 		else
-			print "sí es profesor                    "
+			#print "sí es profesor                    "
 		end
 	end
 end
