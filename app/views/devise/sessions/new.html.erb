@@ -1,3 +1,13 @@
+<div class="row hidden">
+  <% if notice %>
+    <p class="alert alert-success" id="notice"><%= notice %></p>
+  <% else %>
+    <p>qqqqqqqqué pasa aquí</p>
+  <% end %>
+  <% if alert %>
+    <p class="alert alert-danger" id="alert"><%= alert %></p>
+  <% end %>
+</div>
 <div class="row">
   <div class=" col-md-offset-4  col-sm-offset-4  col-xs-offset-1">
     <div class="card ">
@@ -27,16 +37,17 @@
             </div>
 
             <% if devise_mapping.rememberable? -%>
-              <div class="checkbox">
+              <!--<div class="checkbox">
                 <label >
                   <%= f.check_box :remember_me %>
                   Recordar Cuenta
                 </label>
-              </div>
+              </div>-->
             <% end -%>
             <div class="actions ">
               <%= f.submit "Entrar" , :class => "btn btn-danger"%>
             </div>
+
           <% end %>
         </div>
         <div class="card-footer">
@@ -47,5 +58,7 @@
     </div>
   </div>
 </div>
+
+
        
 

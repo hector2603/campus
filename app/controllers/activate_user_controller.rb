@@ -22,7 +22,7 @@ class ActivateUserController < ApplicationController
 
 	def update
     	@usuario = User.find(params[:id])
-    	puts "actualizooooooooooooooooooooooooooooooooooooooooo"
+    	#puts "actualizooooooooooooooooooooooooooooooooooooooooo"
 		@usuario.update(active: true)
 		redirect_to @usuario
   	end
