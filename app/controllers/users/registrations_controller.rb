@@ -8,9 +8,9 @@ before_action :configure_account_update_params, only: [:update]
   # end
 
   # POST /resource
-  def create
-    super
-  end
+  #def create
+  #  super
+  #end
 
   # GET /resource/edit
   # def edit
@@ -40,12 +40,12 @@ before_action :configure_account_update_params, only: [:update]
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :rol])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :rol,:avatar])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :rol])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :rol,:avatar])
   end
 
   # The path used after sign up.

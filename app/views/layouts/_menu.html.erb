@@ -87,7 +87,7 @@
 							</li>
 							<li class="hidden-sm hidden-xs">
 			                	<%= link_to(root_path)  do %>
-			                        <%= fa_icon "user"%>
+			                        <%= image_tag current_user.avatar.url(:peque)%>
 			                        <p class="hidden-lg hidden-md hidden-sm">Mi perfil</p>
 							    <%end%>
 							</li>
