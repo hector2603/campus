@@ -44,6 +44,12 @@ gem 'bootstrap-sass', '~> 3.1.1'
 #jquery UI
 gem 'jquery-ui-rails'
 
+# paper clip para subir imagnes en user y noticias 
+gem "paperclip", "~> 5.0.0"
+
+# donde se guardan las imágenes
+gem 'aws-sdk'
+
 # para heroku 
 #gem 'rails_12factor', group: :production  
 #gem 'unicorn' 
