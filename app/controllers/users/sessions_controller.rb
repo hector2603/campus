@@ -13,7 +13,6 @@ before_action :user_activo? , only: [:create]
   # POST /resource/sign_in
   def create
     super
-    flash[:notice] = "Has iniciado sesión" 
   end
 
   # DELETE /resource/sign_out
