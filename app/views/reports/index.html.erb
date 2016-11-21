@@ -3,33 +3,41 @@
   <div class="container-fluid">   
     <div class="row">
       <p id="notice"><%= notice %></p>
-      <h1>Noticias</h1>
+        <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header text-center" data-background-color="red">
+                        <br>
+                        <h4 class="title titulo ">NOTICIAS</h4>
+                    </div>
+                    <div class="card-content table-responsive">
+                        <table class="table">
+                            <thead class="text-primary titulo">
+                              <th>Título</th>
+                              <th>Contenido</th>
+                              <th>Estado</th>
+                              <th>Imagen</th>
+                              <th>Editar</th>
+                              <th>Eliminar</th>
+                              <th>Mostrar</th>
+                            </thead>
+                            <tbody>
+                            <% @reports.each do |report| %>
+                                <tr id="<%=report.id%>">
+                                  <td class="text-primary " ><%= report.title%></td>
+                                  <td><%= report.contenido%></td>
+                                  <td><%= report.active%></td>
+                                  <td><%= image_tag report.avatar.url(:media) %></td>
+                                  <td><%= link_to 'Edit', edit_report_path(report) %></td>
+                                  <td><%= link_to 'Destroy', report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                                  <td><%= link_to 'Show', report %></td>
+                                </tr>
+                            <% end %>
+                            </tbody>
+                        </table>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Contenido</th>
-            <th colspan="3"></th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <% @reports.each do |report| %>
-            <tr>
-              <td><%= report.title %></td>
-              <td><%= report.contenido %></td>
-              <td><%= link_to 'Show', report %></td>
-              <td><%= link_to 'Edit', edit_report_path(report) %></td>
-              <td><%= link_to 'Destroy', report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-
-      <br>
-
-      <%= link_to 'New Report', new_report_path %>
+                    </div>
+                </div>
+            </div>
     </div>
   </div>
 </div>
