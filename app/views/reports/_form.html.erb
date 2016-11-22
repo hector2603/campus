@@ -23,15 +23,13 @@
 
   <div class="form-group label-floating">
     <%= f.label :estado ,:class => "control-label"%><br />
-    <%= f.select :active, [["Activado", "true"], ["Desactivado", "false"]], {}, {class: "form-control"} %>
+    <%= f.select :active, [['Activado', true], ['Desactivado', false]], {}, {class: "form-control"} %>
   </div>
 
   <div class="">
     <%= f.label :Avatar, :class => "control-label" %><br />
     <%= f.file_field :avatar, autofocus: true, :class => "" %>
   </div>
-
-  <br>
   <br>
   <div class="actions">
     <%= f.submit "Noticia", :class => "btn btn-danger"%>
