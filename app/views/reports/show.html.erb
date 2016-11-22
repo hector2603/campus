@@ -1,14 +1,32 @@
-<p id="notice"><%= notice %></p>
+<%= render "layouts/menu" %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @report.title %>
-</p>
+	<div class="content">
+		<p id="notice"><%= notice %></p>
+	            <div class="container-fluid">
+	                <div class="row">
+	                    <div class="col-md-12">
+	                        <div class="card">
+	                            <div class="card-header" data-background-color="red">
+	                            <br>
+	                                <h3 class="title"><%= @report.title %></h3>
+	                            </div>
+	                            <div class="card-content">
+									<div id="typography">									
+										<div class="row">										
+											<div class="tim-typo">
+												<p> <%= @report.contenido %> </p>
+											</div>											
+										</div>
+									</div>
+	                            </div>
+	                        </div>
+	                        <%= image_tag @report.avatar.url() %>
+	                    </div>	                    
+	                </div>
+	            </div>
+	    </div>
 
-<p>
-  <strong>Contenido:</strong>
-  <%= @report.contenido %>
-</p>
 
-<%= link_to 'Edit', edit_report_path(@report) %> |
-<%= link_to 'Back', reports_path %>
+
+<%= render "layouts/footer" %>
+
