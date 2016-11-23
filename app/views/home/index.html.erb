@@ -9,7 +9,7 @@
 				  <ol class="carousel-indicators">
 				  	<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
 				  	<% @reports.each do |i| %>					  
-					    <li data-target="#carousel-example-generic" data-slide-to="<%= i %>"></li>
+					    <li data-target="#carousel-example-generic" data-slide-to="<%= i.id%>"></li>
 				    <% end %>
 				  </ol>
 				 
@@ -23,7 +23,7 @@
 					    </div>
 					    <% @reports.each do |report| %>
 					    <div class="item">
-					      <%= image_tag report.avatar.url() %>
+					      <%= image_tag report.avatar.url(:banner) %>
 					      <div class="carousel-caption">
 					      	<h3> <%= link_to report.title, report %> </h3>				    
 					      </div>

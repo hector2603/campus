@@ -26,10 +26,21 @@
               <%= f.label :Nombre,  :class => "control-label" %><br />
               <%= f.text_field :name, autofocus: true,  :class => "form-control" %>
             </div>
+            <%if current_user.rol!=1%>
+              <div class="form-group label-floating">
+                <%= f.label :Rol,  :class => "control-label" %><br />
+               <%= f.select :rol, [["Profesor", "2"], ["Estudiante", "3"]], {}, {class: "form-control"} %>
+              </div>
+            <%else%>
+              <div class="form-group label-floating">
+                <%= f.label :Rol,  :class => "control-label" %><br />
+                <%= f.text_field :rol, autofocus: true,  :class => "form-control" %>
+              </div>              
+            <%end%>
 
-            <div class="form-group label-floating">
-              <%= f.label :Rol,  :class => "control-label" %><br />
-             <%= f.select :rol, [["Profesor", "2"], ["Estudiante", "3"]], {}, {class: "form-control"} %>
+            <div class="">
+              <%= f.label :Avatar, :class => "control-label" %><br />
+              <%= f.file_field :avatar, autofocus: true, :class => "" %>
             </div>
 
             <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
