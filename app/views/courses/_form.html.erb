@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= f.label :profesor %><br />
-    <%= f.select :users_id, User.all.map{|p| [p.name, p.id]} %>
+    <%= f.select :user_id, User.all.map{|p| [p.name, p.id]} %>
   </div>
 
   <div class="field">

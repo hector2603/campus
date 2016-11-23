@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 20161123060841) do
     t.date     "date_end"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "users_id"
-    t.index ["users_id"], name: "profesor"
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_courses_on_user_id"
   end
 
   create_table "reports", force: :cascade do |t|

@@ -1,5 +1,7 @@
 class AddReferenceToCourse < ActiveRecord::Migration[5.0]
   def change
-  	add_reference(:courses, :users, index: { name: "profesor" })
+  	change_table :courses do |t|
+  		t.references :user, index: true
+      end
   end
 end
