@@ -22,11 +22,38 @@
 					    <%end%>
 	                </li>
 	                <li>
-	                	<%= link_to(root_path)  do %>
+	                	<%= link_to(courses_path)  do %>
 	                        <%= fa_icon "clipboard"%>
 	                        <p>Cursos</p>
 					    <%end%>
 	                </li>
+
+	                <%if current_user.rol==1 %>
+		                <li class="dropdown">	    
+		                	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+		                		<%= fa_icon "address-book-o"%>
+								<span class="notification">Cursos</span>
+								<b class="caret"></b>
+						    </a>
+			    			<ul class="dropdown-menu">
+							  <li>
+							  	<%= link_to(courses_path)  do %>
+							  	<%= fa_icon "book"%>
+								<span class="notification">Consultar Cursos</span>
+						    	<%end%>
+						      </li>				
+							  <li class="divider"></li>
+							  <li>
+							  	<%= link_to(new_course_path) do %>
+		                        <%= fa_icon "pencil-square-o"%>
+								<span class="notification">Crear Cursos</span>
+						    	<%end%>
+			    			</ul>
+		                </li>
+	                <%end%>
+
+
+
 	                <%if current_user.rol==1 %>
 		                <li class="dropdown">	    
 		                	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
