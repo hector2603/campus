@@ -1,7 +1,7 @@
 class ActivateUserController < ApplicationController
 	before_action :authenticate_user!
 	respond_to :html
-	before_action :es_admin?
+	before_action :es_admin?, only:[:index, :create,:edit,:update]
 	def index
 		#print "Hola mundo desde index de autentificarrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr"
 		@usuarios = User.where(active: false)
