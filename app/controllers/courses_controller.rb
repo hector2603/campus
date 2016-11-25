@@ -14,11 +14,15 @@ class CoursesController < ApplicationController
 
   # GET /courses/new
   def new
+    @profesores = User.where( rol: 2)
     @course = Course.new
+    respond_to(@course, @profesores)
   end
 
   # GET /courses/1/edit
   def edit
+    @profesores = User.where( rol: 2)
+    respond_to( @profesores)
   end
 
   # POST /courses

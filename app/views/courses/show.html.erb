@@ -5,9 +5,9 @@
   <%= @course.name %>
 </p>
 <p>
-	<%=image_tag @course.user.avatar.url() %>
-	Hola
-</p> 
+	<%=image_tag @course.user.avatar.url(:peque) %>
+</p>
+<p><%=@course.user.name%></p>
 <p>
   <strong>Date end:</strong>
   <%= @course.date_end %>
