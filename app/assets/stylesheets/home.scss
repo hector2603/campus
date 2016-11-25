@@ -7,10 +7,21 @@ font-weight:bold !important;
 font-size: 2em;	 
 }
 
+.margen {
+  margin-top: 10px;
+}
+
 .titulo, .titulo th {
 	font-weight:bold !important;
 }
 
+.perfil {
+  margin-bottom: 20px;
+  margin-left: 5px;
+  margin-right: 15px;
+  padding: 15px 5px 0px 5px;
+  border-bottom: 1px solid #ccc;
+}
 
 
 .card:before {
@@ -26,6 +37,13 @@ font-size: 2em;
   border-radius: 4px;
 
   }
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  float:left;
+  margin-right: 3%;
+}  
 
 .form-group.is-focused .form-control {
   background-image: linear-gradient(#f44336, #f44336), linear-gradient(#D2D2D2, #D2D2D2) !important;
@@ -44,12 +62,65 @@ font-size: 2em;
 
 	width:auto;
 	height: auto;
-    float:left;
+  float:left;
 }
 
+.color a {
+  color: #ffffff;
+}
 .card-header {
 	height: 114px;
 }
+
+.contenedor {
+  padding-top: 0px !important;
+}
+
+.logros .icons {
+    padding: 38px;
+    width: 94px;
+    height: 94px;
+    color: #f5f5f5;
+    font-size: 42px;
+    font-size: 38px;
+    text-align: center;
+    -ms-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 0;
+    display: inline-table;
+    color: #f5f5f5;
+    background: transparent;
+    border-radius: 0;
+    background: #e81d02;
+    border: none;
+    width: 100%;
+    border-bottom: 1px solid #fff;
+    margin-top: 5px;
+}
+
+.box-area {
+    padding: 15px;
+    margin-bottom: 5px;
+    background: #e81d02;
+    /* margin-top: -21px; */
+    border: none;
+    color: #000000;
+}
+
+.box-area h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #f5f5f5;
+    text-transform: uppercase;
+}
+
+.contenido {
+
+  padding-bottom: 10px;
+
+}
+
 @media screen and  (max-width: 490px) {
 .caja {
 	width:280px !important;
