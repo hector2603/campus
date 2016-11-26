@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   resources :courses
+  resources :courses do
+    resources :qualifications
+    resources :asignar_estudiantes
+  end
   resources :reports
   get 'home/index'
   resources :activate_user

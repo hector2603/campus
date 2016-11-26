@@ -1,0 +1,24 @@
+<%= form_for(@course) do |f| %>
+    <%= f.fields_for :qualification do |q| %>
+      <li>
+        <div class="field">
+          <%= q.label :course_id %>
+          <%= q.text_field :course_id %>
+        </div>
+
+        <div class="field">
+          <%= q.label :user_id %>
+          <%= q.text_field :user_id %>
+        </div>
+
+        <div class="field">
+          <%= q.label :nota %>
+          <%= q.number_field :nota %>
+        </div>
+
+        <div class="actions">
+          <%= q.submit %>
+        </div>
+      </li>
+    <% end %>
+<% end %>

@@ -1,0 +1,13 @@
+<h1>New asignación</h1>
+<%= @course.name%>
+<div class="row">
+	<div class="col-md-12">
+		<%= select_tag(:estudiantes1,options_for_select(@estudiantes.map{|p| [p.name, p.id]}) ) %>
+	</div>
+</div>
+
+<%= form_tag(controller: "asignar_estudiantes", action: "create", method: "get", class: "form-control") do %>
+	<%= text_field_tag(:q , nil, class: 'hidden') %>
+	<%= submit_tag("enviar") %>
+
+<%end%>
