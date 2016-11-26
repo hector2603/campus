@@ -10,14 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20161125161149) do
+=======
+ActiveRecord::Schema.define(version: 20161125150933) do
+>>>>>>> 3799fc0d49bf914ddf4d75c3a6eca1e2f48a6cf2
 
   create_table "courses", force: :cascade do |t|
     t.string   "name"
     t.date     "date_end"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.integer  "user_id"
+    t.text     "description"
+    t.integer  "code"
+    t.boolean  "active",      default: false
     t.index ["user_id"], name: "index_courses_on_user_id"
   end
 

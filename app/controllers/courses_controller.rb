@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_course, only: [:show, :edit, :update, :destroy]
+  respond_to :html
 
   # GET /courses
   # GET /courses.json
@@ -17,13 +18,13 @@ class CoursesController < ApplicationController
   def new
     @profesores = User.where( rol: 2)
     @course = Course.new
-    respond_to(@course, @profesores)
+    respond_with(@course, @profesores)
   end
 
   # GET /courses/1/edit
   def edit
     @profesores = User.where( rol: 2)
-    respond_to( @profesores)
+    respond_with( @profesores)
   end
 
   # POST /courses
@@ -74,6 +75,6 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:name, :date_end, :user_id)
+      params.require(:course).permit(:name, :date_end, :user_id, :active, :description, :code )
     end
 end

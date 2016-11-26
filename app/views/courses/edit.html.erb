@@ -1,6 +1,31 @@
-<h1>Editing Course</h1>
+<%= render "layouts/menu" %>
+<div class="content">
+  <div class="container-fluid">   
+	<div class="row">
+	  <div class=" col-md-offset-4  col-sm-offset-4  col-xs-offset-1">
+	    <div class="card caja ">
+	      <div class="card-header" data-background-color="red">
+	      <div class="col-md-3 col-sm-3 col-xs-2">
+	        <div class="cajon">
+	         <%= image_tag "uni.png", :alt => "univalle +", :title => "univalle", :class => " imagen"%>
+	        </div>
+	        </div> 
+	        <div class="col-md-9 col-sm-9 col-xs-8">
+	        <div class="text-center">
+	          <h2 class="texto">Editar Curso</h2>
+	        </div>
+	        </div> 
+	      </div>
+	      <div class="card-content">
 
-<%= render 'form', course: @course %>
+				<%= render 'form', course: @course %>
 
-<%= link_to 'Show', @course %> |
-<%= link_to 'Back', courses_path %>
+				<%= link_to 'Show', @course %> |
+				<%= link_to 'Back', courses_path %>
+
+	      </div>
+	    </div>
+	</div>
+	</div>
+</div>
+<%= render "layouts/footer" %>

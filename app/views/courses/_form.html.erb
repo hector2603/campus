@@ -11,22 +11,37 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+  <div class="form-group label-floating"><br />
+    <%= f.label :name, :class => "control-label" %>
+    <%= f.text_field :name, autofocus: true, :class => "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :profesor %><br />
-    <%= f.select :user_id, User.all.map{|p| [p.name, p.id]} %>
+  <div class="form-group label-floating"><br />
+    <%= f.label :Código, :class => "control-label" %>
+    <%= f.text_field :code, autofocus: true, :class => "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :date_end %>
-    <%= f.text_field :date_end %>
+  <div class="form-group label-floating">
+    <%= f.label :Descripción, :class => "control-label"%><br />
+    <%= f.text_area :description, autofocus: true,  :class => "form-control"%>
+  </div>
+
+  <div class="form-group label-floating">
+    <%= f.label :profesor, :class => "control-label" %><br />
+    <%= f.select :user_id, @profesores.map{|p| [p.name, p.id]}, {}, {class: "form-control"} %>
+  </div>
+
+  <div class="form-group label-floating">
+    <%= f.label :Fecha_Finalización_De_Curso, :class => "control-label" %><br />
+    <%= f.date_field :date_end, autofocus: true, :class => "form-control" %>
+  </div>
+
+  <div class="form-group label-floating">
+    <%= f.label :estado ,:class => "control-label"%><br />
+    <%= f.select :active, [['Activado', true], ['Desactivado', false]], {}, {class: "form-control"} %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Cursos", :class => "btn btn-danger"%>
   </div>
 <% end %>
