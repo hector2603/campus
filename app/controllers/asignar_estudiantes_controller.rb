@@ -9,7 +9,8 @@ class AsignarEstudiantesController < ApplicationController
 
 	def create
 		puts "se creooooooooooooooooooooooooooooooooooooooooooooooooooo"
-		puts params[:q]
+		estudiantes = JSON(params[:q])
+		puts estudiantes["estudiantes"][0]["id"]
 		redirect_to root_path
 	end
 end

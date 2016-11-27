@@ -4,9 +4,15 @@
 	<div class="col-md-12">
 		<%= select_tag(:estudiantes1,options_for_select(@estudiantes.map{|p| [p.name, p.id]}) ) %>
 	</div>
+	<div class="col-md-12">
+		<%= select_tag(:estudiantes2,options_for_select(@estudiantes.map{|p| [p.name, p.id]}) ) %>
+	</div>
+	<div class="col-md-12">
+		<%= select_tag(:estudiantes3,options_for_select(@estudiantes.map{|p| [p.name, p.id]}) ) %>
+	</div>
 </div>
 
-<%= form_tag(controller: "asignar_estudiantes", action: "create", method: "get", class: "form-control") do %>
+<%= form_tag({controller: "asignar_estudiantes", action: "create"}, method: "POST", id: "asignar") do %>
 	<%= text_field_tag(:q , nil, class: 'hidden') %>
 	<%= submit_tag("enviar") %>
 
