@@ -10,7 +10,12 @@ class AsignarEstudiantesController < ApplicationController
 	def create
 		puts "se creooooooooooooooooooooooooooooooooooooooooooooooooooo"
 		estudiantes = JSON(params[:q])
-		puts estudiantes["estudiantes"][0]["id"]
+		estudiantes["estudiantes"].uniq!{|s| s.first}# elimina los estudiantes duplicados
+		estudiantes["estudiantes"].each do |i|
+			@qualification = Qualification.new(course_id: params[:course_id] , user_id: i["id"])
+			@qualification.save
+		end
+		puts estudiantes["estudiantes"]
 		redirect_to root_path
 	end
 end
