@@ -1,17 +1,38 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @course.name %>
-</p>
-<p>
-	<%=image_tag @course.user.avatar.url(:peque) %>
-</p>
-<p><%=@course.user.name%></p>
-<p>
-  <strong>Date end:</strong>
-  <%= @course.date_end %>
-</p>
-
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+<%= render "layouts/menu" %>
+<div class="content">
+  <div class="container-fluid">   
+    <div class="row">
+        <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header text-center" data-background-color="red">
+                        <br>
+                        <h4 class="title titulo ">CURSO</h4>
+                    </div>
+                    <div class="card-content table-responsive">
+                        <table class="table">
+                            <thead class="text-primary titulo">
+                              <th>Nombre</th>
+                              <th>Código</th>
+                              <th>Fecha Finalización de Curso</th>
+                              <th>Estado</th>
+                              <th>Profesor</th>
+                              <th></th>
+                            </thead>
+                            <tbody>
+                                <tr id="<%=@course.id%>">
+                                  <td class="text-primary " ><%= @course.name%></td>
+                                  <td><%= @course.code%></td>
+                                  <td><%= @course.date_end %></td>
+                                  <td><%= @course.active%></td>
+                                  <td><%= @course.user.name%></td>
+                                  <td><%=image_tag @course.user.avatar.url(:peque) %></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+    </div>
+  </div>
+</div>
+<%= render "layouts/footer" %>
