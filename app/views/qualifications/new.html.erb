@@ -27,4 +27,12 @@
 	<%= submit_tag("enviar") %>
 
 <%end%>
+<%= javascript_tag do %>
+  $(document).ready(function() {
+
+    $( "#calificar" ).submit(function( event ) { // función para crear objeto json para agregar la calificación de los estudiantes
+        submitCalificar(event);
+    }); 
+  });
+<% end %>
 

@@ -1,5 +1,7 @@
 class QualificationsController < ApplicationController
   before_action :set_qualification, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :es_profesor?, only:[:new, :create,:edit,:update]
 
   # GET /qualifications
   # GET /qualifications.json
@@ -9,7 +11,7 @@ class QualificationsController < ApplicationController
 
   # GET /qualifications/1
   # GET /qualifications/1.json
-  def show
+  def show 
   end
 
   # GET /qualifications/new
@@ -33,17 +35,7 @@ class QualificationsController < ApplicationController
       @qualification =Qualification.where( "course_id = ? AND user_id = ?" ,params[:course_id], i["user_id"] )
       @qualification.update(nota: i["nota"])
     end
-    '''@qualification = Qualification.new(qualification_params)
-
-    respond_to do |format|
-      if @qualification.save
-        format.html { redirect_to @qualification}
-        format.json { render :show, status: :created, location: @qualification }
-      else
-        format.html { render :new }
-        format.json { render json: @qualification.errors, status: :unprocessable_entity }
-      end
-    end'''
+    redirect_to course_qualifications_path( params[:course_id])
   end
 
   # PATCH/PUT /qualifications/1

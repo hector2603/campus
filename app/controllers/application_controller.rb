@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 	end
 
 	def es_profesor?
-		if current_user.rol<=2
+		if current_user.rol>2
 			print "no es profesor                    "
 			flash[:notice] = "Necesitas ser Profesor para accerder a esta función" 
 			redirect_to root_path

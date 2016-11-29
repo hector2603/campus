@@ -17,3 +17,14 @@
 	<%= submit_tag("enviar") %>
 
 <%end%>
+
+<%= javascript_tag do %>
+  $(document).ready(function() {
+	  $("select").select2();// Asignando a todos los selects a  ser select 2
+
+	  $( "#asignar" ).submit(function( event ) { // función para crear un objeto json para enviar al controlador con los estudiantes asignados a una materia
+			submitAsignar(event);s
+		});
+
+});
+<% end %>
