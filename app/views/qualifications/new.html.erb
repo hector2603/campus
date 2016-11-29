@@ -1,4 +1,30 @@
-<h1>New Qualification</h1>
+<%= javascript_tag do %>
+  window.estudiantes = <%= raw @qualifications.to_json %>
+<% end %>
+<h1>Calificar a los estudiantes del Curso <%= @qualifications.first.course.name %></h1>
 
-<%= render 'form', qualification: @qualification %>
+<table>
+  <thead>
+    <tr>
+	    <th>Código</th>
+	    <th>User</th>
+	    <th>Nota</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @qualifications.each do |qualification| %>
+      <tr>
+      	<td><%= qualification.user.id %></td>
+        <td><%= qualification.user.name %></td>
+        <td><%= number_field_tag 'nota', qualification.nota , class: 'nota', min: 0, max: 5, step: 0.01 %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= form_tag({controller: "qualifications", action: "create"}, method: "POST", id: "calificar") do %>
+	<%= text_field_tag(:q , nil, class: 'hidden') %>
+	<%= submit_tag("enviar") %>
+
+<%end%>
 

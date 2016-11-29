@@ -4,7 +4,7 @@ class QualificationsController < ApplicationController
   # GET /qualifications
   # GET /qualifications.json
   def index
-    @qualifications = Qualification.all
+    @qualifications = Qualification.where(course_id: params[:course_id])
   end
 
   # GET /qualifications/1
@@ -15,8 +15,8 @@ class QualificationsController < ApplicationController
   # GET /qualifications/new
   def new
     #@qualification = Qualification.new
-    @course = Course.new
-    2.times{@course.qualifications.build}
+    @qualifications = Qualification.where(course_id: params[:course_id])
+
   end
 
   # GET /qualifications/1/edit
@@ -26,17 +26,24 @@ class QualificationsController < ApplicationController
   # POST /qualifications
   # POST /qualifications.json
   def create
-    @qualification = Qualification.new(qualification_params)
+    puts "actualizandooooooooooooooooooooooooooooooo"
+    estudiantes = JSON(params[:q])
+    estudiantes.each do |i|
+      puts i
+      @qualification =Qualification.where( "course_id = ? AND user_id = ?" ,params[:course_id], i["user_id"] )
+      @qualification.update(nota: i["nota"])
+    end
+    '''@qualification = Qualification.new(qualification_params)
 
     respond_to do |format|
       if @qualification.save
-        format.html { redirect_to @qualification, notice: 'Qualification was successfully created.' }
+        format.html { redirect_to @qualification}
         format.json { render :show, status: :created, location: @qualification }
       else
         format.html { render :new }
         format.json { render json: @qualification.errors, status: :unprocessable_entity }
       end
-    end
+    end'''
   end
 
   # PATCH/PUT /qualifications/1
@@ -71,6 +78,6 @@ class QualificationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def qualification_params
-      params.require(:qualification).permit(:course_id, :user_id, :nota)
+      params.require(:qualification).permit(:q)
     end
 end

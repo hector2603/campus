@@ -12,7 +12,7 @@ class AsignarEstudiantesController < ApplicationController
 		estudiantes = JSON(params[:q])
 		estudiantes["estudiantes"].uniq!{|s| s.first}# elimina los estudiantes duplicados
 		estudiantes["estudiantes"].each do |i|
-			@qualification = Qualification.new(course_id: params[:course_id] , user_id: i["id"])
+			@qualification = Qualification.new(course_id: params[:course_id] , user_id: i["id"], nota: 0)
 			@qualification.save
 		end
 		puts estudiantes["estudiantes"]
