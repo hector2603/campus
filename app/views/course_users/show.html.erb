@@ -1,0 +1,8 @@
+<td class="text-primary " ><%= @course.name%></td>
+<td><%= @course.code%></td>
+<td><%= @course.date_end %></td>
+<td><%= @course.active%></td>
+<td><%= @course.user.name%></td>
+<td><%=image_tag @course.user.avatar.url(:peque) %></td>
+<p>si eres profesor puedes calificar a los estudiantes asignados a este curso, si no eres el profesor no des click aquí por favor</p>
+<%= link_to 'ver estudiantes', course_qualifications_path(@course.id) %>

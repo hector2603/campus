@@ -5,7 +5,7 @@ class AsignarEstudiantesController < ApplicationController
 	def new
 		puts params[:course_id]
 		@course = Course.find(params[:course_id])
-		@estudiantes = User.all #where(rol: 3)
+		@estudiantes = User.all #where(rol: 3, active: true)
 		respond_with(@course,@estudiantes) 
 	end
 

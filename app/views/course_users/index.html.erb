@@ -1,0 +1,10 @@
+<h1>Tus cursos asignados</h1>
+<% @courses.each do |course| %>
+    <tr id="<%=course.id%>">
+      <td class="text-primary " ><%= course.name%></td>
+      <td><%= course.code%></td>
+      <td><%= course.active%></td>
+      <td><%= link_to 'Show', course_user_path(course.id) %></td>
+    </tr>
+    <br>
+<% end %>
