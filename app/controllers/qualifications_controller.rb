@@ -30,12 +30,23 @@ class QualificationsController < ApplicationController
   def create
     puts "actualizandooooooooooooooooooooooooooooooo"
     estudiantes = JSON(params[:q])
+    error = 0
     estudiantes.each do |i|
       puts i
-      @qualification =Qualification.where( "course_id = ? AND user_id = ?" ,params[:course_id], i["user_id"] )
-      @qualification.update(nota: i["nota"])
+      if i["nota"].to_f > 5 || i["nota"].to_f < 0
+        error = 1
+      else
+        @qualification =Qualification.where( "course_id = ? AND user_id = ?" ,params[:course_id], i["user_id"] )
+        @qualification.update(nota: i["nota"])
+      end
     end
-    redirect_to course_qualifications_path( params[:course_id])
+    if error == 0
+      redirect_to course_qualifications_path( params[:course_id])
+    else
+      puts "errooooooooooooooooooooooooooooooorrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr"
+      flash[:notice] = "Por Favor Verifique Las Notas (Max:5 - Min: 0)" 
+      redirect_to new_course_qualification_path( params[:course_id])
+    end
   end
 
   # PATCH/PUT /qualifications/1

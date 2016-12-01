@@ -1,8 +1,42 @@
-<td class="text-primary " ><%= @course.name%></td>
-<td><%= @course.code%></td>
-<td><%= @course.date_end %></td>
-<td><%= @course.active%></td>
-<td><%= @course.user.name%></td>
-<td><%=image_tag @course.user.avatar.url(:peque) %></td>
-<p>si eres profesor puedes calificar a los estudiantes asignados a este curso, si no eres el profesor no des click aquí por favor</p>
-<%= link_to 'ver estudiantes', course_qualifications_path(@course.id) %>
+<%= render "layouts/menu" %>
+<div class="content">
+  <div class="container-fluid">   
+    <div class="row">
+        <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header text-center" data-background-color="red">
+                        <br>
+                        <h4 class="title titulo ">CURSO</h4>
+                    </div>
+                    <div class="card-content table-responsive">
+                        <table class="table">
+                            <thead class="text-primary titulo">
+                              <th>Nombre</th>
+                              <th>Código</th>
+                              <th>Fecha Finalización de Curso</th>
+                              <th>Estado</th>
+                              <th>Profesor</th>
+                              <th></th>
+                            </thead>
+                            <tbody>
+                                <tr id="<%=@course.id%>">
+                                  <td class="text-primary " ><%= @course.name%></td>
+                                  <td><%= @course.code%></td>
+                                  <td><%= @course.date_end %></td>
+                                  <td><%= @course.active%></td>
+                                  <td><%= @course.user.name%></td>
+                                  <td><%=image_tag @course.user.avatar.url(:peque) %></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p>si eres profesor puedes calificar a los estudiantes asignados a este curso, si no eres el profesor no des click aquí por favor</p>
+                        <%if current_user.rol==2 %>
+							<%= link_to 'ver estudiantes', course_qualifications_path(@course.id) %>
+						<%end%>
+                    </div>                  
+                </div>
+            </div>
+    </div>
+  </div>
+</div>
+<%= render "layouts/footer" %>

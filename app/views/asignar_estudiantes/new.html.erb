@@ -1,25 +1,45 @@
-<h1>New asignación</h1>
-<%= @course.name%>
-<div class="row">
-	<div class="col-md-12" id="contenedorEstudiantes">
-		<%= select_tag(:estudiantes1,options_for_select(@estudiantes.map{|p| [p.name, p.id]}) ) %>
-	</div>
+<%= render "layouts/menu" %>
+<div class="content">
+  <div class="container-fluid">   
+    <div class="row">
+        <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header text-center" data-background-color="red">
+                        <br>
+                        <h4 class="title titulo ">Asignar Estudiantes</h4>
+                    </div>
+                    <div class="card-content">
+
+                    	<h5 class="text-primary " ><%= @course.name%></h5>
+						<div class="row">
+							<div class="col-md-12" id="contenedorEstudiantes">
+								<%= select_tag(:estudiantes1,options_for_select(@estudiantes.map{|p| [p.name, p.id]}) ) %>
+								<a onclick="agregarSelect2Estudiante()" class="btn btn-danger"> <%= fa_icon "plus"%> Más Estudiantes </a>
+							</div>
+						</div>
+						<%= form_tag({controller: "asignar_estudiantes", action: "create"}, method: "POST", id: "asignar") do %>
+							<%= text_field_tag(:q , nil, class: 'hidden') %>
+							<div class="actions">
+							    <%= submit_tag("Asignar Estudiantes", :class => "btn btn-danger")%>
+							</div>
+						<%end%>
+
+						<%= javascript_tag do %>
+							$(document).ready(function() {
+							  $("select").select2();// Asignando a todos los selects a  ser select 2
+
+							  $( "#asignar" ).submit(function( event ) { // función para crear un objeto json para enviar al controlador con los estudiantes asignados a una materia
+									submitAsignar(event);s
+							});
+
+							window.estudiantes = <%= raw @estudiantes.to_json %>
+						});
+						<% end %>
+                        
+                    </div>
+                </div>
+            </div>
+    </div>
+  </div>
 </div>
-<a onclick="agregarSelect2Estudiante()" class="btn btn-primary"> <%= fa_icon "plus"%> </a>
-<%= form_tag({controller: "asignar_estudiantes", action: "create"}, method: "POST", id: "asignar") do %>
-	<%= text_field_tag(:q , nil, class: 'hidden') %>
-	<%= submit_tag("enviar") %>
-
-<%end%>
-
-<%= javascript_tag do %>
-	$(document).ready(function() {
-	  $("select").select2();// Asignando a todos los selects a  ser select 2
-
-	  $( "#asignar" ).submit(function( event ) { // función para crear un objeto json para enviar al controlador con los estudiantes asignados a una materia
-			submitAsignar(event);s
-	});
-
-	window.estudiantes = <%= raw @estudiantes.to_json %>
-});
-<% end %>
+<%= render "layouts/footer" %>

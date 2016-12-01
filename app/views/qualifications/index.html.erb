@@ -1,31 +1,35 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Qualifications <%= @qualifications.first.course.name%></h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Course</th>
-      <th>User</th>
-      <th>Nota</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @qualifications.each do |qualification| %>
-      <tr>
-        <td><%= qualification.course %></td>
-        <td><%= qualification.user.name %></td>
-        <td><%= qualification.nota %></td>
-        <td><%= link_to 'Show', course_qualification_path(qualification.course, qualification) %></td>
-        <td><%= link_to 'Edit', edit_course_qualification_path(qualification.course, qualification) %></td>
-        <td><%= link_to 'Destroy', [qualification.course, qualification], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Qualification', new_course_qualification_path %>
+<%= render "layouts/menu" %>
+<div class="content">
+  <div class="container-fluid">   
+    <div class="row">
+        <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header text-center" data-background-color="red">
+                        <br>
+                        <h4 class="title titulo ">Calificaciones del Curso: <%= @qualifications.first.course.name%></h4>
+                    </div>
+                    <div class="card-content table-responsive">
+                        <table class="table">
+                            <thead class="text-primary titulo">
+                              <th>Código Estudiante</th>
+                              <th>Nombre Estudiante</th>
+                              <th>Nota</th>                             
+                            </thead>
+                            <tbody>
+                            <% @qualifications.each do |qualification| %>
+                                <tr id="<%=qualification.id%>">
+                                  <td class="text-primary " ><%= qualification.user.id %></td>
+                                  <td><%= qualification.user.name %></td>
+                                  <td><%= qualification.nota %></td>
+                                </tr>
+                            <% end %>
+                            </tbody>
+                        </table>
+                        <%= link_to 'Calificar', new_course_qualification_path %>
+                    </div>
+                </div>
+            </div>
+    </div>
+  </div>
+</div>
+<%= render "layouts/footer" %>
