@@ -2,5 +2,4 @@
 
 <%= render 'form', content_course: @content_course %>
 
-<%= link_to 'Show', @content_course %> |
-<%= link_to 'Back', content_courses_path %>
+<%= link_to 'Volver al Curso', course_user_path(params[:course_id]) ,class: "btn btn-primary"%>

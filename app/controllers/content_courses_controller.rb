@@ -1,6 +1,8 @@
 class ContentCoursesController < ApplicationController
   before_action :set_content_course, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
+  respond_to :html
+  before_action :es_profesor?, only:[:new, :create,:edit,:update]
   # GET /content_courses
   # GET /content_courses.json
   def index
@@ -14,7 +16,8 @@ class ContentCoursesController < ApplicationController
 
   # GET /content_courses/new
   def new
-    @content_course = ContentCourse.new
+    course = Course.find(params[:course_id])
+    @content_course = course.content_courses.build
   end
 
   # GET /content_courses/1/edit
@@ -28,7 +31,7 @@ class ContentCoursesController < ApplicationController
 
     respond_to do |format|
       if @content_course.save
-        format.html { redirect_to @content_course, notice: 'Content course was successfully created.' }
+        format.html { redirect_to course_user_path(params[:course_id]), notice: 'Content course was successfully created.' }
         format.json { render :show, status: :created, location: @content_course }
       else
         format.html { render :new }
@@ -42,7 +45,7 @@ class ContentCoursesController < ApplicationController
   def update
     respond_to do |format|
       if @content_course.update(content_course_params)
-        format.html { redirect_to @content_course, notice: 'Content course was successfully updated.' }
+        format.html { redirect_to course_user_path(params[:course_id]), notice: 'Content course was successfully updated.' }
         format.json { render :show, status: :ok, location: @content_course }
       else
         format.html { render :edit }
@@ -56,7 +59,7 @@ class ContentCoursesController < ApplicationController
   def destroy
     @content_course.destroy
     respond_to do |format|
-      format.html { redirect_to content_courses_url, notice: 'Content course was successfully destroyed.' }
+      format.html { redirect_to course_user_path(params[:course_id]), notice: 'Content course was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -64,7 +67,8 @@ class ContentCoursesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_content_course
-      @content_course = ContentCourse.find(params[:id])
+      course = Course.find(params[:course_id])
+      @content_course = course.content_courses.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

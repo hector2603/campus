@@ -10,37 +10,41 @@
                     </div>
                     <div class="card-content table-responsive">
                         <table class="table">
-                            <thead class="text-primary titulo">
-                              <th>Nombre</th>
-                              <th>Código</th>
-                              <th>Fecha Finalización de Curso</th>
-                              <th>Estado</th>
-                              <th>Profesor</th>
-                              <th></th>
-                            </thead>
-                            <tbody>
-                                <tr id="<%=@course.id%>">
-                                  <td class="text-primary " ><%= @course.name%></td>
-                                  <td><%= @course.code%></td>
-                                  <td><%= @course.date_end %></td>
-                                  <td><%= @course.active%></td>
-                                  <td><%= @course.user.name%></td>
-                                  <td><%=image_tag @course.user.avatar.url(:peque) %></td>
-                                </tr>
-                            </tbody>
+                          <thead class="text-primary titulo">
+                            <th>Nombre</th>
+                            <th>Código</th>
+                            <th>Fecha Finalización de Curso</th>
+                            <th>Estado</th>
+                            <th>Profesor</th>
+                            <th></th>
+                          </thead>
+                          <tbody>
+                              <tr id="<%=@course.id%>">
+                                <td class="text-primary " ><%= @course.name%></td>
+                                <td><%= @course.code%></td>
+                                <td><%= @course.date_end %></td>
+                                <td><%= @course.active%></td>
+                                <td><%= @course.user.name%></td>
+                                <td><%=image_tag @course.user.avatar.url(:peque) %></td>
+                              </tr>
+                          </tbody>
                         </table>
-
-
-                        --------
-
-                       <%= text_area_tag :content, "", :class => "tinymce", :rows => 40, :cols => 120 %>
-                      
-
-                       <%= tinymce %>
-                        --------
+                        <%@course.content_courses.each do |c|%>
+                          <div class="card">
+                            <div class="card-content">
+                              <%= c.content.html_safe %>
+                            </div>
+                            <div class="card_footer">
+                              Creado: <%= c.created_at.strftime("%b %d, %Y")%>
+                              <%= link_to 'editar Entrada', edit_course_content_course_path(@course,c), class: "btn btn-primary" %>
+                              <%= link_to 'Eliminar entrada', [@course,c], method: :delete, data: { confirm: '¿Está seguro?' } ,class: "btn btn-warning"%>
+                            </div>
+                          </div>
+                        <%end%>
+                        <%= link_to 'Crear nueva entrada', new_course_content_course_path(@course.id), class: "btn btn-primary"%>
                         <p>si eres profesor puedes calificar a los estudiantes asignados a este curso, si no eres el profesor no des click aquí por favor</p>
                         <%if current_user.rol<=2 %>
-            							<%= link_to 'ver estudiantes', course_qualifications_path(@course.id) %>
+            							<%= link_to 'ver estudiantes', course_qualifications_path(@course.id), class: "btn btn-primary"%>
             						<%end%>
                     </div>                  
                 </div>
