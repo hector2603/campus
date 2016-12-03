@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :courses
   resources :courses do
     resources :qualifications
+    resources :content_courses
     resources :asignar_estudiantes
   end
   resources :course_users

@@ -6,7 +6,7 @@
                 <div class="card">
                     <div class="card-header text-center" data-background-color="red">
                         <br>
-                        <h4 class="title titulo ">CURSO</h4>
+                        <h4 class="title titulo "><%= @course.name%></h4>
                     </div>
                     <div class="card-content table-responsive">
                         <table class="table">
@@ -29,10 +29,19 @@
                                 </tr>
                             </tbody>
                         </table>
+
+
+                        --------
+
+                       <%= text_area_tag :content, "", :class => "tinymce", :rows => 40, :cols => 120 %>
+                      
+
+                       <%= tinymce %>
+                        --------
                         <p>si eres profesor puedes calificar a los estudiantes asignados a este curso, si no eres el profesor no des click aquí por favor</p>
-                        <%if current_user.rol==2 %>
-							<%= link_to 'ver estudiantes', course_qualifications_path(@course.id) %>
-						<%end%>
+                        <%if current_user.rol<=2 %>
+            							<%= link_to 'ver estudiantes', course_qualifications_path(@course.id) %>
+            						<%end%>
                     </div>                  
                 </div>
             </div>

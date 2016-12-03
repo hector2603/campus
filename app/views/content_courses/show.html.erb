@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @content_course.course %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @content_course.content.html_safe %>
+</p>
+
+<%= link_to 'Edit', edit_content_course_path(@content_course) %> |
+<%= link_to 'Back', content_courses_path %>

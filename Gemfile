@@ -50,6 +50,9 @@ gem "paperclip", "~> 5.0.0"
 # donde se guardan las imágenes
 gem 'aws-sdk'
 
+#para lo de tinyMCE
+gem 'tinymce-rails'
+
 # para heroku 
 #gem 'rails_12factor', group: :production  
 #gem 'unicorn' 
