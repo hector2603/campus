@@ -33,6 +33,7 @@
                           <div class="card">
                             <div class="card-content">
                               <%= c.content.html_safe %>
+                              <%= link_to "archivo", c.file.url() %>
                             </div>
                             <div class="card_footer">
                               Creado: <%= c.created_at.strftime("%b %d, %Y")%>
