@@ -8,5 +8,7 @@ class User < ApplicationRecord
 	#do_not_validate_attachment_file_type :avatar
 	has_many :courses
 	has_many :qualification
+	has_many :blogs
+	has_many :comments
 	has_many :courses, :through => :qualification
 end

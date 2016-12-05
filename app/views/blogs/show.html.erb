@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Creador:</strong>
+  <%= @blog.user.id %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @blog.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @blog.content.html_safe %>
+</p>
+<%= link_to 'Comentar', new_blog_comment_path(@blog) , class: "btn btn-primary"%>
+<div>
+	<h1>Comentarios</h1>
+	<% @blog.comments.each do |comment| %>
+        <h3><%= comment.user.name %> comentó</h3>
+        <p>
+        	<%= comment.content.html_safe %>
+        </p>
+        <%= link_to 'Editar comentario', edit_blog_comment_path(@blog,comment), class: "btn btn-primary" %>
+        <td><%= link_to 'Eliminar comentario', [@blog,comment], method: :delete, data: { confirm: 'Are you sure?' } ,class: "btn btn-danger"%></td>
+      </tr>
+    <% end %>
+</div>
+
+<%= link_to 'Edit', edit_blog_path(@blog) %> |
+<%= link_to 'Back', blogs_path %>

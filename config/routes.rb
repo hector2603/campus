@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :blogs
+  resources :blogs do
+    resources :comments, only: [:new ,:create, :edit, :update, :destroy]
+  end
   resources :courses
   resources :courses do
     resources :qualifications
