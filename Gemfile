@@ -53,6 +53,7 @@ gem 'aws-sdk'
 #para lo de tinyMCE
 gem 'tinymce-rails'
 
+
 # para heroku 
 #gem 'rails_12factor', group: :production  
 #gem 'unicorn' 

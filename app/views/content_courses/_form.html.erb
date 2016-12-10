@@ -2,7 +2,6 @@
   <% if content_course.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(content_course.errors.count, "error") %> prohibited this content_course from being saved:</h2>
-
       <ul>
       <% content_course.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,18 +10,29 @@
     </div>
   <% end %>
     <%= f.text_field :course_id ,class:"hidden"%>
-  <div class="field">
-    <%= f.label :content %>
+  <div class="form-group label-floating">
+    <%= f.label :Contenido, :class => "control-label" %>
     <%= f.text_area :content, :class => "tinymce", :rows => 20, :cols => 50 %>
     <%= tinymce %>
   </div>
-
-  <div class="">
-    <%= f.label :Archivo , :class => "control-label" %><br />
-    <%= f.file_field :file, autofocus: true, :class => "" %>
+  <br>
+  <div class="input-group">    
+      <label class="input-group-btn">
+          <span class="btn btn-default btn-file">
+              <%= fa_icon "file-pdf-o"%>              
+              Seleccione el Archivo
+              <%= f.file_field :file %>              
+          </span>
+      </label>
+      <input type="text" class="form-control" readonly>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Guardar" ,class: "btn btn-primarys"%>
-  </div>
+<div class="row">                              
+    <div class="col-md-4 col-md-offset-4">
+       <div class="actions">
+          <%= f.submit "Guardar" ,class: "btn btn-danger btn-block"%>
+        </div>
+    </div>                                
+</div> 
+
 <% end %>

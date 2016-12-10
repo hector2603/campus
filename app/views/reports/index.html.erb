@@ -6,7 +6,7 @@
                 <div class="card">
                     <div class="card-header text-center" data-background-color="red">
                         <br>
-                        <h4 class="title titulo ">NOTICIAS</h4>
+                        <h2 class="title titulo ">NOTICIAS</h2>
                     </div>
                     <div class="card-content table-responsive">
                         <table class="table">
@@ -17,18 +17,22 @@
                               <th>Imagen</th>
                               <th>Editar</th>
                               <th>Eliminar</th>
-                              <th>Mostrar</th>
                             </thead>
                             <tbody>
                             <% @reports.each do |report| %>
                                 <tr id="<%=report.id%>">
-                                  <td class="text-primary " ><%= report.title%></td>
+                                  <td class="text-primary " ><%= link_to report.title, report %></td>
                                   <td><%= report.contenido%></td>
                                   <td><%= report.active%></td>
                                   <td><%= image_tag report.avatar.url(:media) %></td>
-                                  <td><%= link_to 'Edit', edit_report_path(report) %></td>
-                                  <td><%= link_to 'Destroy', report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                                  <td><%= link_to 'Show', report %></td>
+                                  <td align="center"><%= link_to edit_report_path(report) do %>
+                                      <%= fa_icon "pencil lg"%>                                        
+                                      <%end%>
+                                  </td>
+                                  <td align="center"><%= link_to report, method: :delete, data: { confirm: 'Esta Seguro?' } do %>
+                                      <%= fa_icon "trash lg"%>                                        
+                                      <%end%>
+                                  </td>
                                 </tr>
                             <% end %>
                             </tbody>

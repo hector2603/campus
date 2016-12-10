@@ -41,25 +41,29 @@
 				</div> <!-- Carousel -->
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-lg-3 col-md-6 col-sm-6">
-				<div class="card card-stats">
-					<div class="card-header" data-background-color="green">
-						<h3> Cursos Actuales</h3>
-					</div>
-					<div class="card-content">
-						<% @courses.each do |course| %>
-						    <tr id="<%=course.id%>">
-						      <td class="text-primary " ><%= course.name%></td>
-						      <td><%= course.code%></td>
-						      <td><%= course.active%></td>
-						      <td><%= link_to 'Show', course_user_path(course.id) %></td>
-						    </tr>
-						    <br>
-						<% end %>
-					</div>
-					<div class="card-footer">
-					</div>
+		<br>
+		<div class="content">
+			<div class="container-fluid">
+				<div class="row">
+					<h3>Tus Cursos Asignados</h3>
+					<% @courses.each do |course| %>
+						<div class="col-lg-4 col-md-8 col-sm-8">
+							<div class="card card-stats">
+								<div class="card-header" data-background-color="red">
+									<i class="material-icons">assignment</i>
+								</div>
+								<div class="card-content">
+									<h4 class="category"><%= course.code%></h4>
+									<h3 class="title"><%= course.name%></h3>
+								</div>
+								<div class="card-footer">
+									<div class="stats">
+										<h4><i class="material-icons">bookmark_border</i> <%= link_to 'Ir al Curso', course_user_path(course.id) %></h4>
+									</div>
+								</div>
+							</div>
+						</div>
+					<% end %>
 				</div>
 			</div>
 		</div>

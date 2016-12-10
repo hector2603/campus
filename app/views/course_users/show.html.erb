@@ -6,9 +6,20 @@
                 <div class="card">
                     <div class="card-header text-center" data-background-color="red">
                         <br>
-                        <h4 class="title titulo "><%= @course.name%></h4>
-                    </div>
+                        <h2 class="title titulo "><%= @course.name%></h2>
+                    </div>                    
                     <div class="card-content table-responsive">
+                      <%if current_user.rol<=2 %>
+                        <div class="row">
+                            <div class="col-md-4 col-md-offset-1">
+                            <%= link_to 'Crear nueva entrada', new_course_content_course_path(@course.id), class: "btn btn-danger btn-lg btn-block"%>
+                            </div>
+                            <div class="col-md-4 col-md-offset-2">                      
+                                <%= link_to 'ver estudiantes', course_qualifications_path(@course.id), class: "btn btn-danger btn-lg btn-block"%>
+                            </div>
+                        </div>
+                      <%end%>
+                      <br>                
                         <table class="table">
                           <thead class="text-primary titulo">
                             <th>Nombre</th>
@@ -32,24 +43,38 @@
                         <%@course.content_courses.each do |c|%>
                           <div class="card">
                             <div class="card-content">
-                              <%= c.content.html_safe %>
-                              <%= link_to c.file.url(), class: "btn btn-success" do %>
-                                <%= fa_icon "file-text"%>
-                                Descargar Archivo
-                              <%end%>
+                              <div class="row">
+                                <div class="col-md-5 col-md-offset-1">
+                                  <h3> Creado: <%= c.created_at.strftime("%b %d, %Y")%> </h3>
+                                </div>
+                                <div class="col-md-6 ">
+                                <%if current_user.rol<3 %>
+                                  <div class="row">
+                                    <div class="col-md-5 col-md-offset-1">
+                                      <%= link_to 'Editar Entrada', edit_course_content_course_path(@course,c), class: "btn btn-default btn-block" %>
+                                    </div>
+                                    <div class="col-md-5">
+                                      <%= link_to 'Eliminar entrada', [@course,c], method: :delete, data: { confirm: '¿Está seguro?' } ,class: "btn btn-default btn-block"%> 
+                                    </div>
+                                  </div>
+                                <%end%>
+                                </div>
+                              </div>
+                              <%= c.content.html_safe %>                              
                             </div>
                             <div class="card_footer">
-                              Creado: <%= c.created_at.strftime("%b %d, %Y")%>
-                              <%= link_to 'editar Entrada', edit_course_content_course_path(@course,c), class: "btn btn-primary" %>
-                              <%= link_to 'Eliminar entrada', [@course,c], method: :delete, data: { confirm: '¿Está seguro?' } ,class: "btn btn-warning"%>
+                              <div class="row">                              
+                                <div class="col-md-5 col-md-offset-1">
+                                  <%= link_to c.file.url(), class: "btn btn-default" do %>
+                                  <%= fa_icon "download"%>
+                                   Descargar Archivo
+                                  <%end%>
+                                </div>                                
+                              </div> 
+                              <br>                           
                             </div>
                           </div>
-                        <%end%>
-                        <%= link_to 'Crear nueva entrada', new_course_content_course_path(@course.id), class: "btn btn-primary"%>
-                        <p>si eres profesor puedes calificar a los estudiantes asignados a este curso, si no eres el profesor no des click aquí por favor</p>
-                        <%if current_user.rol<=2 %>
-            							<%= link_to 'ver estudiantes', course_qualifications_path(@course.id), class: "btn btn-primary"%>
-            						<%end%>
+                        <%end%>                  
                     </div>                  
                 </div>
             </div>

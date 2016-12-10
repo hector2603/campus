@@ -17,14 +17,14 @@
                               <th>Activar</th>
                             </thead>
                             <tbody>
-<% @usuarios.each do |user| %>
+                              <% @usuarios.each do |user| %>
                                 <tr id="<%=user.id%>">
                                   <td class="text-primary " ><%= user.name%></td>
                                   <td><%= user.email%></td>
                                   <td><%= user.rol%></td>
                                   <td><a onclick="activarUsuario(<%=user.id%>)" class="btn btn-danger">Activar</a></td>
                                 </tr>
-<% end %>
+                              <% end %>
                             </tbody>
                         </table>
 

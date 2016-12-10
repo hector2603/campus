@@ -12,80 +12,146 @@
                         <div class="perfil">
                             <p class= "texto">Datos de cuenta</p>
                         </div>
-                        <div class = "avatar"> 
-                           <%=image_tag @usuario.avatar.url(:media), :class => "img-circle" %>
-                        </div>
-                       <p class= "texto margen"><%= @usuario.name%> </p>
-                       <p> E-mail: <%= @usuario.email%> </p>
 
-                        <% if @usuario.rol == 1 %>
-                            <p>Rol: Administrador</p>
-                        <%elsif @usuario.rol == 2%>
-                            <p>Rol: Profesor</p>
-                        <%else %>
-                            <p>Rol: Estudiante</p>
-                       <%end%>
-                       <p>Activo:  <%= @usuario.active%></p>
+                        <div class="row">                              
+                            <div class="col-md-6">
+                                <div class = "avatar"> 
+                                    <%=image_tag @usuario.avatar.url(:media), :class => "img-circle" %>
+                                </div>
+                                <p class= "texto margen"><%= @usuario.name%> </p>
+                                <p> E-mail: <%= @usuario.email%> </p>
+                                <% if @usuario.rol == 1 %>
+                                    <p>Rol: Administrador</p>
+                                <%elsif @usuario.rol == 2%>
+                                    <p>Rol: Profesor</p>
+                                <%else %>
+                                    <p>Rol: Estudiante</p>
+                               <%end%>
+                               <p>Activo:  <%= @usuario.active%></p>
+                            </div>
+                            <div class="col-md-4 col-md-offset-1">
+                              <br>
+                              <br>
+                                <div class="btn btn-danger btn-block">
+                                    <%= link_to(edit_user_registration_path(current_user.id)) do%>
+                                    <%= fa_icon "clipboard"%>
+                                        <p>Editar Mi perfil</p>
+                                    <%end%>
+                                </div>
+                            </div>                                
+                        </div>
 
                     <div class="perfil">
                         <p class= "texto">Logros</p>
                     </div>
 
-
                     <div class="row">
-                        <div class="logros"> 
+                        <div class="col-md-3">
+                            <div class="card">
+                                <div class="card-header card-chart" data-background-color="red">
+                                    <div align="center">
+                                        <br>
+                                        <br>
+                                        <span class="icons c1"><i class="fa fa-trophy fa-5x"></i></span>
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <h4 class="title">Bronce</h4>
+                                    <p class="category"><span class="text-success"><i class="fa fa-graduation-cap"></i> <%= @bronce%>  </span> Materias sobre 3 y menor que 4</p>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                           
-                                <div class="col-md-3 col-sm-6 text-center">
-                                     <span class="icons c1"><i class="fa fa-trophy"></i></span> 
-                                        <div class="box-area">
-                                         <h3>BRONCE</h3>
-                                         <p>Has sacado una calificación de 3 o más en una materia</p>
+                        <div class="col-md-3">
+                            <div class="card">
+                                <div class="card-header card-chart" data-background-color="red">
+                                    <div align="center">
+                                        <br>
+                                        <br>
+                                        <span class="icons c1"><i class="fa fa-trophy fa-5x"></i></span>
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <h4 class="title">Plata</h4>
+                                    <p class="category"><span class="text-success"><i class="fa fa-graduation-cap"></i> <%= @plata%>  </span> Materias sobre 4 y menor que 4.5</p>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="card">
+                                <div class="card-header card-chart" data-background-color="red">
+                                    <div align="center">
+                                        <br>
+                                        <br>
+                                        <span class="icons c1"><i class="fa fa-trophy fa-5x"></i></span>
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <h4 class="title">Oro</h4>
+                                    <p class="category"><span class="text-success"><i class="fa fa-graduation-cap"></i> <%= @oro%>  </span> Materias sobre 4.5 y menor que 5</p>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="card">
+                                <div class="card-header card-chart" data-background-color="red">
+                                    <div align="center">
+                                        <br>
+                                        <br>
+                                        <span class="icons c1"><i class="fa fa-diamond fa-5x"></i></span>
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <h4 class="title">Diamante</h4>
+                                    <p class="category"><span class="text-success"><i class="fa fa-graduation-cap"></i> <%= @diamante%>  </span> Materias con nota de 5</p>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="perfil">
+                        <p class= "texto">Estadísticas</p>
+                    </div>
+
+                    <div class="content">
+                         <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-8 col-sm-8">
+                                    <div class="card card-stats">
+                                        <div class="card-header" data-background-color="red">
+                                            <i class="material-icons">trending_up</i>
                                         </div>
-                                </div>
-                        
-
-                            
-                                <div class="col-md-3 col-sm-6 text-center"> 
-                                    <span class="icons c2"><i class="fa fa-trophy"></i></span> 
-                                    <div class="box-area">
-                                        <h3>PLATA</h3> 
-                                        <p>Has sacado una calificación de 4 o más en una materia</p>
+                                        <div class="card-content">
+                                            <p class="category">Promedio General</p>
+                                            <h3 class="title"><%= @promedioGeneral%></h3>
+                                        </div>
+                                        <div class="card-footer">
+                                            <div class="stats">                                                
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                     
-
-                       
-                                <div class="col-md-3 col-sm-6 text-center"> 
-                                    <span class="icons c3"><i class="fa fa-trophy"></i></span> 
-                                    <div class="box-area">
-                                        <h3>PLATINO</h3> 
-                                        <p>Has sacado una calificación de 4.5 o más en una materia</p>
-                                    </div>
-                                </div>
-                           
-
-                      
-                                <div class="col-md-3 col-sm-6 text-center"> 
-                                    <span class="icons c4"><i class="fa fa-trophy"></i></span>
-                                    <div class="box-area">
-                                        <h3>DIAMANTE</h3> 
-                                        <p>Has sacado una calificación de 5 en una materia</p>
-                                    </div>
-                                </div>
-                           
-                        </div> 
+                            </div>
+                        </div>
                     </div>
-                    
-                      <div class="btn btn-danger color ">
-                   
-                     <%= link_to(edit_user_registration_path(current_user.id)) do%>
-                    <%= fa_icon "clipboard"%>
-                    <p>Editar Mi perfil </p>
-                      <%end%>
-                    </div>
- 
-
                       
                     </div>
                 </div>

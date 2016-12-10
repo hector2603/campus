@@ -6,7 +6,7 @@
                 <div class="card">
                     <div class="card-header text-center" data-background-color="red">
                         <br>
-                        <h4 class="title titulo ">CURSOS</h4>
+                        <h2 class="title titulo ">CURSOS</h2>
                     </div>
                     <div class="card-content table-responsive">
                         <table class="table">
@@ -16,17 +16,21 @@
                               <th>Estado</th>
                               <th>Editar</th>
                               <th>Eliminar</th>
-                              <th>Mostrar</th>
                             </thead>
                             <tbody>
                             <% @courses.each do |course| %>
                                 <tr id="<%=course.id%>">
-                                  <td class="text-primary " ><%= course.name%></td>
+                                  <td class="text-primary " ><%= link_to course.name, course %></td>
                                   <td><%= course.code%></td>
                                   <td><%= course.active%></td>
-                                  <td><%= link_to "Edit", edit_course_path(course) %> </td>
-                                  <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                                  <td><%= link_to 'Show', course %></td>
+                                  <td align="left"><%= link_to edit_course_path(course) do %> 
+                                      <%= fa_icon "pencil lg"%>                                        
+                                      <%end%>
+                                  </td>
+                                  <td align="left"><%= link_to course, method: :delete, data: { confirm: 'Está seguro?'} do%>
+                                    <%= fa_icon "trash lg"%>                                        
+                                      <%end%>
+                                  </td>
                                 </tr>
                             <% end %>
                             </tbody>
