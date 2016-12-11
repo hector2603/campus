@@ -1,3 +1,15 @@
+			
+<%= javascript_tag do %>
+	$(document).ready(function() {
+	    if ($( "#notice" ).length) {
+	        demo.showNotification('bottom','right',$("#notice").text(),2)
+	    }
+	    if ($( "#alert" ).length) {
+	        demo.showNotification('bottom','right',$("#alert").text(),1)
+	    }
+});
+<%end%>
+
 			<footer class="footer">
 				<div class="container-fluid">
 					<nav class="pull-left">

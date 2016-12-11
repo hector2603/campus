@@ -1,6 +1,8 @@
 class CoursesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_course, only: [:show, :edit, :update, :destroy]
+  before_action :verificar_curso, only: [:edit, :show, :update]
+  before_action :curso_activo?, only: [:edit,:update]
   respond_to :html
 
   # GET /courses

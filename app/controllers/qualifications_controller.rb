@@ -2,6 +2,8 @@ class QualificationsController < ApplicationController
   before_action :set_qualification, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   before_action :es_profesor?, only:[:new, :create,:edit,:update]
+  before_action :verificar_curso, only:[:edit,:update,:show]
+  before_action :curso_activo?, only:[:create,:new]
 
   # GET /qualifications
   # GET /qualifications.json

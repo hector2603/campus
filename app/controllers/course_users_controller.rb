@@ -1,6 +1,7 @@
 class CourseUsersController < ApplicationController
 	before_action :authenticate_user!
 	before_action :es_profesor?, only:[:new, :create,:edit,:update]
+	before_action :verificar_curso, only:[:show]
 	def index
 		@courses = Course.where(user_id: current_user.id)
 	end

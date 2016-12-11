@@ -3,6 +3,8 @@ class ContentCoursesController < ApplicationController
   before_action :authenticate_user!
   respond_to :html
   before_action :es_profesor?, only:[:new, :create,:edit,:update]
+  before_action :verificar_curso, only:[:new,:edit,:update,:show]
+  before_action :curso_activo?, only:[:new,:edit,:update,:show]
   # GET /content_courses
   # GET /content_courses.json
   def index

@@ -1,0 +1,7 @@
+heroku git:remote -a campusproyecto
+
+git push heroku master
+
+heroku run rake db:migrate
+
+repl.it

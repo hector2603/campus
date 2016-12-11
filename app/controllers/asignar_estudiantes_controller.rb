@@ -2,6 +2,8 @@ class AsignarEstudiantesController < ApplicationController
 	before_action :authenticate_user!
 	respond_to :html
 	before_action :es_profesor?, only:[:new, :create,:edit,:update]
+	before_action :verificar_curso, only:[:new,:create]
+  	before_action :curso_activo?, only:[:new,:create]
 	def new
 		puts params[:course_id]
 		@course = Course.find(params[:course_id])

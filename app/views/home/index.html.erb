@@ -45,8 +45,29 @@
 		<div class="content">
 			<div class="container-fluid">
 				<div class="row">
-					<h3>Tus Cursos Asignados</h3>
+					<h3> Tus Cursos </h3>
 					<% @courses.each do |course| %>
+						<div class="col-lg-4 col-md-8 col-sm-8">
+							<div class="card card-stats">
+								<div class="card-header" data-background-color="red">
+									<i class="material-icons">assignment</i>
+								</div>
+								<div class="card-content">
+									<h4 class="category"><%= course.code%></h4>
+									<h3 class="title"><%= course.name%></h3>
+								</div>
+								<div class="card-footer">
+									<div class="stats">
+										<h4><i class="material-icons">bookmark_border</i> <%= link_to 'Ir al Curso', course_user_path(course.id) %></h4>
+									</div>
+								</div>
+							</div>
+						</div>
+					<% end %>
+				</div>
+				<div class="row">
+					<h3> Cursos Anteriores</h3>
+					<% @courses_anteriores.each do |course| %>
 						<div class="col-lg-4 col-md-8 col-sm-8">
 							<div class="card card-stats">
 								<div class="card-header" data-background-color="red">

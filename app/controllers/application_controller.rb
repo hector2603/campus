@@ -19,4 +19,32 @@ class ApplicationController < ActionController::Base
 			#print "sí es profesor                    "
 		end
 	end
+
+	def verificar_curso
+		if params[:id]
+			course = Course.find(params[:id])
+		else
+			course = Course.find(params[:course_id])
+		end
+		if course.date_end < Time.new
+			course.update(active: false)
+			#flash[:notice] = "Este Curso ya terminó, la información se puede consultar" 
+		end
+	end
+
+	def curso_activo?
+		if params[:id]
+			course = Course.find(params[:id])
+		else
+			course = Course.find(params[:course_id])
+		end
+		if !course.active
+			puts "aquiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"
+			flash[:notice] = "Este Curso ya terminó, la información se puede consultar, pero no se puede editar ni calificar estudiantes" 
+			redirect_to course_user_path(course.id)
+			#return false
+		else
+			#return true
+		end
+	end
 end
