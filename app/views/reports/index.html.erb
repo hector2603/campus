@@ -23,7 +23,11 @@
                                 <tr id="<%=report.id%>">
                                   <td class="text-primary " ><%= link_to report.title, report %></td>
                                   <td><%= report.contenido%></td>
-                                  <td><%= report.active%></td>
+                                  <% if report.active %>
+                                    <td> Noticia Activa</td>
+                                  <% else %>
+                                    <td> Noticia Inactiva</td>
+                                  <% end %>
                                   <td><%= image_tag report.avatar.url(:media) %></td>
                                   <td align="center"><%= link_to edit_report_path(report) do %>
                                       <%= fa_icon "pencil lg"%>                                        

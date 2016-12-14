@@ -21,7 +21,13 @@
                                 <tr id="<%=user.id%>">
                                   <td class="text-primary " ><%= user.name%></td>
                                   <td><%= user.email%></td>
-                                  <td><%= user.rol%></td>
+                                  <% if user.rol == 1 %>
+                                    <td>Administrador</td>
+                                <%elsif user.rol == 2%>
+                                    <td>Profesor</td>
+                                <%else %>
+                                    <td>Estudiante</td>
+                               <%end%>
                                   <td><a onclick="activarUsuario(<%=user.id%>)" class="btn btn-danger">Activar</a></td>
                                 </tr>
                               <% end %>

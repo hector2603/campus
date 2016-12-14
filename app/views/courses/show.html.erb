@@ -14,6 +14,7 @@
                               <th>Nombre</th>
                               <th>Código</th>
                               <th>Fecha Finalización de Curso</th>
+                              <th>Descripción</th>
                               <th>Estado</th>
                               <th>Profesor</th>
                               <th></th>
@@ -23,7 +24,12 @@
                                   <td class="text-primary " ><%= @course.name%></td>
                                   <td><%= @course.code%></td>
                                   <td><%= @course.date_end %></td>
-                                  <td><%= @course.active%></td>
+                                   <td><%= @course.description %></td>
+                                  <% if  @course.active %>
+                                    <td> Curso Activo</td>
+                                  <% else %>
+                                    <td> Curso Inactivo</td>
+                                  <% end %>
                                   <td><%= @course.user.name%></td>
                                   <td><%=image_tag @course.user.avatar.url(:peque) %></td>
                                 </tr>

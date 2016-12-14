@@ -27,7 +27,13 @@
                                 <%else %>
                                     <p>Rol: Estudiante</p>
                                <%end%>
-                               <p>Activo:  <%= @usuario.active%></p>
+                               <% if  @usuario.active %>
+                                    <p> Cuenta Activa</p>
+                                <% else %>
+                                    <p> Cuenta Inactiva</p>
+                                <% end %> 
+                                 
+                                
                             </div>
                             <div class="col-md-4 col-md-offset-1">
                               <br>
@@ -141,7 +147,7 @@
                                         </div>
                                         <div class="card-content">
                                             <p class="category">Promedio General</p>
-                                            <h3 class="title"><%= @promedioGeneral%></h3>
+                                            <h3 class="title"><%= eval(sprintf("%8.2f", @promedioGeneral))%></h3>
                                         </div>
                                         <div class="card-footer">
                                             <div class="stats">                                                
@@ -149,6 +155,30 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                         <div class="container-fluid">
+                            <div class="row">
+                                <% @promedios.each do |promedio| %>
+                                    <div class="col-lg-4 col-md-8 col-sm-8">
+                                        <div class="card card-stats">
+                                            <div class="card-header" data-background-color="red">
+                                                <i class="material-icons">timeline</i>
+                                            </div>
+                                            <div class="card-content">
+                                                <p class="category">Semetre <%= promedio[:semestre] %> del <%= promedio[:añoSemestre] %> </p>
+                                                <h3 class="title"><%= promedio[:promedio] %></h3>
+                                            </div>
+                                            <div class="card-footer">
+                                                <div class="stats">                                                
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <% end %>
                             </div>
                         </div>
                     </div>

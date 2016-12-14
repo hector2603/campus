@@ -24,8 +24,18 @@
                                 </tr>
                             <% end %>
                             </tbody>
-                        </table>
-                        <%= link_to 'Calificar', new_course_qualification_path %>
+                        </table>                       
+                        <div class="row">                              
+                        <div class="col-md-4 col-md-offset-1">
+                          <%if @qualifications.first.course.active %>
+                            <%= link_to new_course_qualification_path, class: "btn btn-default btn-block" do %>
+                            <%= fa_icon "pencil-square-o"%>
+                             Calificar
+                            <%end%>
+                          <% else %>
+                          <% end %>
+                        </div>                                
+                      </div>
                     </div>
                 </div>
             </div>

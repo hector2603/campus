@@ -17,7 +17,49 @@ class ActivateUserController < ApplicationController
 		@oro = Qualification.where("user_id = ? AND nota >= ? AND nota < ?", current_user.id, 4.5, 5).count('nota')
 		@diamante = Qualification.where("user_id = ? AND nota = ?", current_user.id, 5).count('nota')
 
-		respond_with(@usuario, @promedioGeneral, @bronce, @plata, @oro, @diamante)
+		# fecha del curso más viejo
+		date = User.find(current_user).qualification.joins(:course).order("courses.date_end").first.course.date_end 
+		# fecha del cuso más nuevo
+		date_curso_mas_nuevo = User.find(current_user).qualification.joins(:course).order("courses.date_end").last.course.date_end
+
+		inicio_del_ano = date.beginning_of_year
+		mitad_del_ano = inicio_del_ano + 6.month
+		date_curso_mas_nuevo = date_curso_mas_nuevo + 6.month		
+		fin_del_ano = date.end_of_year
+		semestre = ""
+
+		if date <= mitad_del_ano 
+			inicio_semestre = inicio_del_ano
+		else 
+			inicio_semestre = mitad_del_ano
+		end
+
+		fin_semestre = inicio_semestre + 6.month
+		@promedios = []
+
+		while fin_semestre <= date_curso_mas_nuevo do
+			prom = User.find(current_user).qualification.joins(:course).where("courses.date_end >= ? AND courses.date_end <= ? ", inicio_semestre, fin_semestre).average("nota")
+			if prom 
+				prom = prom.to_digits
+				añoSemestre = inicio_semestre.year
+				if inicio_semestre.month < 7
+					semestre = "I"
+				else
+					semestre = "II"
+				end
+			else
+				prom = 0
+				if inicio_semestre.month < 7
+					semestre = "I"
+				else
+					semestre = "II"
+				end
+			end
+			@promedios.push({"promedio": prom, "semestre": semestre, "añoSemestre": añoSemestre})
+			inicio_semestre = fin_semestre
+			fin_semestre = fin_semestre + 6.month
+		end
+		respond_with(@usuario, @promedioGeneral, @bronce, @plata, @oro, @diamante, @promedios)
 	end
 
 	def edit

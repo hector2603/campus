@@ -11,4 +11,7 @@ class User < ApplicationRecord
 	has_many :blogs
 	has_many :comments
 	has_many :courses, :through => :qualification
+
+	validates :name, :rol, :email, presence: true
+	validates :name, length: { in: 1..75 , message: "debe tener entre 1 y 75 caracteres"}
 end

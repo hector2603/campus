@@ -22,7 +22,11 @@
                                 <tr id="<%=course.id%>">
                                   <td class="text-primary " ><%= link_to course.name, course %></td>
                                   <td><%= course.code%></td>
-                                  <td><%= course.active%></td>
+                                  <%if course.active %>
+                                    <td> Curso Activo </td> 
+                                  <%else%>
+                                    <td> Curso Inactivo </td> 
+                                  <%end%>
                                   <td align="left"><%= link_to edit_course_path(course) do %> 
                                       <%= fa_icon "pencil lg"%>                                        
                                       <%end%>

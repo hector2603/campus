@@ -14,15 +14,19 @@
                               <th>Nombre</th>
                               <th>Código</th>
                               <th>Estado</th>
-                              <th>Mostrar</th>
+                              <th>Descripción</th>
                             </thead>
                             <tbody>
                             <% @courses.each do |course| %>
                                 <tr id="<%=course.id%>">
-                                  <td class="text-primary " ><%= course.name%></td>
+                                  <td><%= link_to course.name, course_user_path(course.id) %></td>
                                   <td><%= course.code%></td>
-                                  <td><%= course.active%></td>                                
-                                  <td><%= link_to 'Show', course_user_path(course.id) %></td>
+                                  <%if course.active %>
+                                    <td> Curso Activo </td> 
+                                  <%else%>
+                                    <td> Curso Inactivo </td> 
+                                  <%end%>
+                                  <td><%= course.description%></td>                                  
                                 </tr>
                             <% end %>
                             </tbody>
