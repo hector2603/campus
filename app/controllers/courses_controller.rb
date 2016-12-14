@@ -18,7 +18,7 @@ class CoursesController < ApplicationController
 
   # GET /courses/new
   def new
-    @profesores = User.where( rol: 2)
+    @profesores = User.where(rol: 2)
     @course = Course.new
     respond_with(@course, @profesores)
   end
