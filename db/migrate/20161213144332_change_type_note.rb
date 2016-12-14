@@ -1,7 +1,7 @@
 class ChangeTypeNote < ActiveRecord::Migration[5.0]
   def up
     change_table :qualifications do |t|
-      t.change :nota, :double
+      t.change :nota, :decimal
     end
   end
 
