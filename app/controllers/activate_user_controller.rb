@@ -6,7 +6,8 @@ class ActivateUserController < ApplicationController
 		#print "Hola mundo desde index de autentificarrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr"
 		@usuarios = User.where(active: false)
 		#puts @usuarios
-		respond_with(@usuarios)
+		@allUser = User.all
+		respond_with(@usuarios,@allUser)
 	end
 
 	def show

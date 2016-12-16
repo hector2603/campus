@@ -18,4 +18,8 @@
 //= require_tree .
 //= require tinymce
 //= require tinymce-jquery
+//= require material-dashboard
+//= formularios
+//= demo
+//= material.min
 

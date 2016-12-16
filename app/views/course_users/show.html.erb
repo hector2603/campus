@@ -47,6 +47,11 @@
                               </tr>
                           </tbody>
                         </table>
+                        <%if current_user.rol==3%>
+                          <h3>    
+                           Tu nota Actual: <%= @nota.first.nota%>
+                          </h3>
+                        <%end%>
                         <%@course.content_courses.each do |c|%>
                           <div class="card">
                             <div class="card-content">

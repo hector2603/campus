@@ -1,13 +1,13 @@
 // código mío 
 
-$( document ).ready(function() {
+/*$( document ).ready(function() {
     if ($( "#notice" ).length) {
         demo.showNotification('bottom','right',$("#notice").text(),2)
     }
     if ($( "#alert" ).length) {
         demo.showNotification('bottom','right',$("#alert").text(),1)
     }
-});
+});*/
 
 
 

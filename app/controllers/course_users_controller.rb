@@ -8,5 +8,6 @@ class CourseUsersController < ApplicationController
 
 	def show
 		@course = Course.find(params[:id])
+		@nota = current_user.qualification.where(course_id: params[:id])
 	end
 end

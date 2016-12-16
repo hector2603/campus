@@ -38,6 +38,40 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header text-center" data-background-color="red">
+                        <h4 class="title titulo ">Todos los Usuarios</h4>
+                    </div>
+                    <div class="card-content table-responsive">
+                        <table class="table">
+                            <thead class="text-primary titulo">
+                              <th>Nombre</th>
+                              <th>Correo</th>
+                              <th>Rol</th>
+                            </thead>
+                            <tbody>
+                              <% @allUser.each do |user| %>
+                                <tr id="<%=user.id%>">
+                                  <td class="text-primary " ><%= user.name%></td>
+                                  <td><%= user.email%></td>
+                                  <% if user.rol == 1 %>
+                                    <td>Administrador</td>
+                                <%elsif user.rol == 2%>
+                                    <td>Profesor</td>
+                                <%else %>
+                                    <td>Estudiante</td>
+                               <%end%>
+                                </tr>
+                              <% end %>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <%= render "layouts/footer" %>
